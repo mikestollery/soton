@@ -1,0 +1,20 @@
+Start with q4trap.py
+
+This is simply the trapezium script given in the work sheet.
+It allows you to play around with n, the number of trapeziums.
+
+q4work.py is work up to question Q4.4
+
+The plot files are useful scripts for plotting integrands
+(without any integration)
+I think these are useful for seeing what range is good to integrate over.
+
+q4pendulum.py is an attempt to do Q4.7 and q4.8
+but I haven't got very far with this.
+I'm not sure how best to use alpha as a parameter.
+
+Although there aren't any marks for 4.6, I strongly recommend you do it
+as SciPy looks like a really useful library and I'm sure you'll be 
+using it in the future.
+
+notes

@@ -1,0 +1,68 @@
+
+c5
+
+2 Preparation
+
+[1]
+
+A struct is a record.  A collection of variables of different data types.
+https://www.tutorialspoint.com/cprogramming/c_structures.htm
+
+enum is an enumerated type. A collection of integers which are represented with words.
+https://en.cppreference.com/w/c/language/enum
+
+[2]
+
+typedef struct {
+    long length;
+    double *element;
+} Vector;
+
+[3]
+
+typedef struct {
+    long rows;
+    long cols;
+    double **element;
+} Matrix;
+
+
+[4]
+
+malloc allocates a given amount of memory for a variable and provides a pointer to it.
+To specify the amount of memory for an array you need to multiply the size of the array by the size of memory required for each element's datatype.
+https://www.tutorialspoint.com/c_standard_library/c_function_malloc.htm
+
+calloc also allocates memory for a data object but requires two parameters:
+ - the number of elements in the array
+ - the size of an element's datatype
+calloc also initialises the memory to zero, while malloc leaves this undefined.
+https://en.cppreference.com/w/c/memory/calloc
+
+[5]
+
+Use the free() command.
+
+[6]
+
+Compile each source file (fname.c) to an object file (fname.o) using the -c option, and then use the compiler to link these object files into the required executable.
+e.g.
+gcc -c fname1.c
+gcc -c fname2.c
+produces fname1.o and fname2.o
+
+Then
+gcc -o fname fname1.o fname2.o
+produces the executable fname.
+
+This process can be set up in a Makefile.
+
+[7]
+
+int main(int argc, char *argv[])
+
+reads the command line arguments.
+argc is the number of arguments
+argv is an array holding the arguments to be read.
+
+

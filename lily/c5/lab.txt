@@ -1,0 +1,261 @@
+c5
+
+3 Laboratory Work
+
+3.1 Vectors
+
+[1] vector.h
+
+typedef struct {
+    long length;
+    double *element;
+} Vector;
+
+-------------------------------------------------------
+
+[2] vector.c
+
+Vector createVector(const unsigned int nLength)
+{
+    Vector v = {nLength, malloc(nLength * sizeof(double))};
+    return v;
+}
+
+void destroyVector(Vector vec)
+{
+    free(vec.element);
+}
+
+-------------------------------------------------------
+
+[3] vector_test.c
+
+/*
+ *  vector_test.c
+ *
+ * For testing fixes to vector
+ *
+ * To compile:
+ *
+ * gcc -c vector.c
+ * gcc vector_test.c vector.o -o vector_test
+ *     
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include "vector.h"
+
+int main(int argc, char *argv[])
+{    
+    Vector v = createVector(5); // create vector of 5 elements
+        
+    // populate first two elements
+    v.element[0] = 27;    
+    v.element[1] = 42;
+        
+    printVector(v);
+    destroyVector(v);
+}
+
+-------------------------------------------------------
+
+[4] vector_file.c
+
+/*
+ *  vector_file.c
+ *
+ * Creates a vector from data read from a file
+ *
+ * To compile:
+ *
+ * gcc -c vector.c
+ * gcc vector_file.c vector.o -o vector_file
+ *     
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include "vector.h"
+
+int main(int argc, char *argv[])
+{    
+    Vector v = createVectorFromFile("vectors.txt");
+        
+    printVector(v);
+    destroyVector(v);
+}
+
+========================================================
+
+3.2 Matrices
+
+[1] matrix.h
+
+typedef struct {
+    long rows;
+    long cols;
+	double **element; 
+} Matrix;
+
+
+-------------------------------------------------------
+
+[2] matrix.c
+
+Matrix createMatrix(const unsigned int nRows, const unsigned int nCols)
+{
+    // allocate memory for rows	
+	Matrix m = {nRows, nCols, malloc(nRows * sizeof(double))};
+	
+	// for each row allocate memory for its columns (as if it were a vector)	
+	for(int i=0; i<nRows; i++) {
+		m.element[i] = malloc(nCols * sizeof(double));
+    }
+    
+	return m;
+}
+
+void destroyMatrix(Matrix mat)
+{
+    // free column memory for each row
+	for(int i=0; i<mat.rows; i++) {
+	    free(mat.element[i]);
+	}
+	
+	// free remainder of memory for rows
+	free(mat.element);
+}
+
+-------------------------------------------------------
+
+[3] matrix_test.c
+
+/*
+ *  matrix_test.c
+ *
+ * For testing fixes to matrix
+ *
+ * To compile:
+ *
+ * gcc -c matrix.c
+ * gcc matrix_test.c matrix.o -o matrix_test
+ *     
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include "matrix.h"
+
+int main(int argc, char *argv[])
+{                
+    Matrix m = createMatrix(2, 3); // create 2 x 3 matrix
+            
+    // add two rows to matrix
+    m.element[0][0] = 1;           
+    m.element[0][1] = 2;       
+    m.element[0][2] = 3;       
+    m.element[1][0] = 4;       
+    m.element[1][1] = 5;       
+    m.element[1][2] = 6;      
+     
+    printMatrix(m);    
+    destroyMatrix(m);
+}
+
+-------------------------------------------------------
+
+[4] matrix_file.c
+
+/*
+ *  matrix_file.c
+ *
+ * Creates a matrix from data read from a file
+ *
+ * To compile:
+ *
+ * gcc -c matrix.c
+ * gcc matrix_file.c matrix.o -o matrix_file
+ *     
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include "matrix.h"
+
+int main(int argc, char *argv[])
+{    
+    Matrix m = createMatrixFromFile("matrix.txt");
+        
+    printMatrix(m);
+    destroyMatrix(m);
+}
+
+========================================================
+
+3.3 Circuit Simulation
+
+[1] circuit.h
+
+#ifndef _CIRCUIT_H
+#define _CIRCUIT_H
+
+#include "vector.h"
+#include "matrix.h"
+
+/* Data Structures */
+
+typedef enum {
+    resistor, voltage, current
+} CompType;
+
+typedef struct {
+    CompType type;
+    unsigned int n1;
+    unsigned int n2;
+    double value;
+    char name[100];
+} Component;
+
+typedef struct {
+    int nC;
+    int nR;
+    int nV;
+    int nI;
+    int nN;
+    Component *comp;
+} Circuit;
+
+/* Interfaces */
+
+Circuit createCircuitFromFile(const char *filename);
+void destroyCircuit(Circuit c);
+void analyseCircuit(const Circuit c);
+Vector solveLinearSystem(Matrix A, Vector b);
+
+#endif
+
+-------------------------------------------------------
+
+[2] analyse.c
+
+#include <stdio.h>
+#include <stdlib.h>
+#include "circuit.h"
+
+int main(int argc, char *argv[])
+{
+	Circuit c;
+	
+	if (argc == 2)
+	{
+		c = createCircuitFromFile(argv[1]);
+		analyseCircuit(c);
+		destroyCircuit(c);
+	} 
+	else 
+		printf("Syntax: %s <filename>\n", argv[0]);
+
+	return EXIT_SUCCESS;
+}
+

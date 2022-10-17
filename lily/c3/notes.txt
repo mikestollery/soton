@@ -1,0 +1,61 @@
+c3
+==
+
+
+Prep
+----
+
+rand() returns a float and in order to perform a division we need to divide it by another float to keep the types consistent.  But RAND_MAX is an integer and so needs to be converted to a float.
+
+
+while-loop condition (exits if number of generations reaches maximum or a good enough fit has been found):
+
+while( (gen < MAX_GEN) && (best_ifit > EPSILON)) {
+
+
+Selection - the for-loop is searching for the best fit.
+
+
+if-statement condition (checks if we've found a better fit that the previously best one)
+ifit < best_ifit
+
+
+Draft definition of initpop() function:
+
+void initpop(float *pop, int size) {
+    for(int i=0; i < POP_SIZE; i++) {
+        pop[i] = rnd();
+    }
+}
+
+
+Draft definition of offspring() function:
+
+void offspring(float parent, float mutst, float *pop, int size) {
+
+    pop[0] = parent; /* store best solution at head of population array */
+
+    for(int i=1; i < size; i++) { /* for rest of population vary the solution by a random amount */
+        pop[i] = parent * must * rnd()
+    }
+}
+
+
+Lab
+---
+
+3.1
+
+The solution doesn't vary much with the random number generator seed RND_INIT, but the number of generations can vary widely, typically from less than 20 to more than 200.  However, this variation appears to be random.
+It is likely that this is because the seed affects only the initial fits which should be a random spread whatever the seed is set to.
+
+3.2
+
+The fitness increases in steps throughout the generations (it never decreases).
+myevoldat13.png shows the graph using RND_INIT 13, 
+myevoldat42.png shows the graph using RND_INIT 42.
+
+3.3
+
+To do.
+

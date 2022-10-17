@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0049)https://secure.ecs.soton.ac.uk/notes/ellabs/1/c5/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>ECS - Part I EL/EE/EM/EEE Laboratories: C5</title>
+  <link rel="stylesheet" media="screen" href="./ECS - Part I EL_EE_EM_EEE Laboratories_ C5_files/css.php" type="text/css">
+  <link rel="stylesheet" media="screen" href="./ECS - Part I EL_EE_EM_EEE Laboratories_ C5_files/intranet.css" type="text/css">
+  <link rel="stylesheet" media="print" href="./ECS - Part I EL_EE_EM_EEE Laboratories_ C5_files/css(1).php" type="text/css">
+
+  <script async="" src="chrome-extension://ofdopmlmgifpfkijadehmhjccbefaeec/assets/comms/commsGDocs.js"></script><script async="" src="chrome-extension://ofdopmlmgifpfkijadehmhjccbefaeec/assets/comms/commsMngr.js"></script><script async="" src="chrome-extension://ofdopmlmgifpfkijadehmhjccbefaeec/assets/comms/commands.js"></script><script async="" src="chrome-extension://ofdopmlmgifpfkijadehmhjccbefaeec/assets/comms/commsEmbedded.js"></script><script async="" src="chrome-extension://ofdopmlmgifpfkijadehmhjccbefaeec/assets/notifications.js"></script><script language="javascript" type="text/javascript" src="./ECS - Part I EL_EE_EM_EEE Laboratories_ C5_files/tiny_mce.js.download"></script>
+  <script language="javascript" type="text/javascript">
+tinyMCE.init({
+	mode : 'textareas',
+	theme : 'advanced',
+	plugins : 'table,layer',
+	theme_advanced_toolbar_location : 'top',
+	theme_advanced_buttons1_add_before : 'cut,copy,paste,separator',
+	theme_advanced_buttons3_add_before : 'tablecontrols,separator',
+	editor_selector : 'mceEditor'
+});
+</script>
+<script type="text/javascript">
+	var isSecure = true;
+</script>
+</head>
+<body id="page_ug___notes_ellabs_EE_EL_EM_EEE_Labs____notes_ellabs_1_Part_I__C5"><span id="textHelpComms"><span id="WebReader" path="chrome-extension://ofdopmlmgifpfkijadehmhjccbefaeec/data/"></span><span id="thScripts"></span></span>
+<div class="noPrint" id="header">
+
+<div id="title" style="margin: 0; padding: 0; "><table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tbody><tr><td align="left" valign="top" rowspan="2"><a href="http://www.ecs.soton.ac.uk/">
+<img src="./ECS - Part I EL_EE_EM_EEE Laboratories_ C5_files/ecs_logo.gif" width="235" height="97" alt="Electronics and Computer Science - a school of the University of Southampton" border="0"></a></td>
+<td align="right" valign="top">
+
+</td>
+</tr>
+<tr>
+<td valign="bottom" align="right" width="100%">
+<ul class="ecsmenu">
+<li style="margin-right:1em; border-right: solid 1px black;"><a href="http://www.ecs.soton.ac.uk/"><span>ECS Home</span></a><span class="hide"> |</span></li>
+<li><a href="https://secure.ecs.soton.ac.uk/"><span>ECS Intranet</span></a><span class="hide"> |</span></li>
+<li><a href="https://intranet.soton.ac.uk/sites/fpse/"><span>FPSE Intranet</span></a>
+<!--<li><a href="https://secure.ecs.soton.ac.uk/kb/"><span>Knowledgebase</span></a><span class="hide"> |</span></li>-->
+</li><li><a href="https://secure.ecs.soton.ac.uk/ug/"><span>UG &amp; MSc</span></a>
+</li><li><a href="https://secure.ecs.soton.ac.uk/staff/"><span>Staff &amp; PG</span></a>
+</li><li><a href="https://handbook.ecs.soton.ac.uk/"><span>Handbook</span></a>
+</li></ul>
+</td>
+</tr></tbody></table>
+</div>
+<hr class="hide"><div id="breadcrumbs" class="noPrint"><div class="login" style="float:right">Logged in as <strong>Lily Stollery</strong> | <a href="https://secure.ecs.soton.ac.uk/logout/">Logout</a></div><span class="hide">Breadcrumb trail: </span><ul>
+<li><a href="http://www.soton.ac.uk/">University of Southampton</a> &gt; </li><li><a href="http://www.ecs.soton.ac.uk/">ECS</a> &gt; </li><li><a href="https://secure.ecs.soton.ac.uk/">Intranet</a> &gt; </li><li><a href="https://secure.ecs.soton.ac.uk/ug/">Undergraduate and MSc</a> &gt; </li><li><a href="https://secure.ecs.soton.ac.uk/notes/ellabs">EE/EL/EM/EEE Labs</a> &gt; </li><li><a href="https://secure.ecs.soton.ac.uk/notes/ellabs/1">Part I</a> &gt; </li><li class="current">C5</li></ul></div>
+</div><div id="content">
+<h1><span class="noScreen">ECS Intranet:<br></span>Part I EL/EE/EM/EEE Laboratories: C5</h1><div class="pageContentBars0"><hr class="hide">
+<a name="contentJump"></a>
+<!-- Main Page Begins -->
+
+<p><font size="+1"><b>Programming Lab C5: Data Structures and Dynamic Memory Allocation</b></font></p>
+
+<p>
+	<b>Outline</b>
+	</p><ul style="list-style-type:none">
+		<li><p>C has a number of features to aid in breaking up the code into smaller modules with clearly defined interfaces. One such feature is the ability to create data structures which enable you to create your own more complex variables. A challenge when writing programs is often the size of an object is not known until runtime. The only way to handle this robustly is to dynamically allocate the memory. You will use these techniques to develop a circuit simulator for DC analysis of passive circuits.
+	</p></li></ul>
+<p></p>
+
+<p>
+	<b>Material</b>
+	</p><ul style="list-style-type:none">
+		<li><p><a href="https://secure.ecs.soton.ac.uk/notes/ellabs/1/c5/c5.pdf">Lab notes</a></p>
+		</li><li><p><a href="https://secure.ecs.soton.ac.uk/notes/ellabs/1/c5/c5.tar">Tar archive with all source and test files</a></p>
+	</li></ul>
+<p></p>
+<p>
+	<b>Source Files</b>
+	</p><ul style="list-style-type:none">
+		<li><a href="https://secure.ecs.soton.ac.uk/notes/ellabs/1/c5/vector.h">vector.h</a>
+		</li><li><a href="https://secure.ecs.soton.ac.uk/notes/ellabs/1/c5/vector.c">vector.c</a>
+		</li><li><a href="https://secure.ecs.soton.ac.uk/notes/ellabs/1/c5/matrix.h">matrix.h</a>
+		</li><li><a href="https://secure.ecs.soton.ac.uk/notes/ellabs/1/c5/matrix.c">matrix.c</a>
+		</li><li><a href="https://secure.ecs.soton.ac.uk/notes/ellabs/1/c5/circuit.h">circuit.h</a>
+		</li><li><a href="https://secure.ecs.soton.ac.uk/notes/ellabs/1/c5/circuit.c">circuit.c</a>
+		</li><li><a href="https://secure.ecs.soton.ac.uk/notes/ellabs/1/c5/analyse.c">analyse.c</a>
+		</li><li><a href="https://secure.ecs.soton.ac.uk/notes/ellabs/1/c5/makefile">makefile</a>
+	</li></ul>
+<p></p>
+<p>
+	<b>Test Files</b>
+	</p><ul style="list-style-type:none">
+		<li><a href="https://secure.ecs.soton.ac.uk/notes/ellabs/1/c5/example1.vec">example1.vec</a>
+		</li><li><a href="https://secure.ecs.soton.ac.uk/notes/ellabs/1/c5/example1.mat">example1.mat</a>
+		</li><li><a href="https://secure.ecs.soton.ac.uk/notes/ellabs/1/c5/example1.cir">example1.cir</a>
+		</li><li><a href="https://secure.ecs.soton.ac.uk/notes/ellabs/1/c5/example2.cir">example2.cir</a>
+		</li><li><a href="https://secure.ecs.soton.ac.uk/notes/ellabs/1/c5/example3.cir">example3.cir</a>
+		</li><li><a href="https://secure.ecs.soton.ac.uk/notes/ellabs/1/c5/example4.cir">example4.cir</a>
+		</li><li><a href="https://secure.ecs.soton.ac.uk/notes/ellabs/1/c5/example5.cir">example5.cir</a>
+	</li></ul>
+<p></p>
+<hr>
+<p><a href="https://secure.ecs.soton.ac.uk/notes/ellabs/handbook/Assessment%20and%20Marking%20Criteria_a.pdf">Assessment and Marking Criteria</a></p>
+<p><br><i><font size="-1">Last updated 2020 October 25.</font></i></p>
+
+<br style="clear: both;">
+<!-- Main Page Ends -->
+</div>
+<br style="clear: both;">
+<hr></div>
+
+<div id="footer" class="noPrint"> 
+<p> <a href="https://fasttracktickets.soton.ac.uk/User/ReportProblemInitial/3" data-ft3-id="3" target="_blank">Is this page inaccurate, incomplete or out of date? Do you have a suggestion?</a>
+<script type="text/javascript" src="./ECS - Part I EL_EE_EM_EEE Laboratories_ C5_files/widget.min.js.download"></script> </p>
+<p>© University of Southampton</p>
+</div> 
+
+<div id="th-page-loaded"></div><div id="th-socket-state" running="false" style="display: none;"></div></body></html>

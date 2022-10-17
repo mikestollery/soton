@@ -1,0 +1,82 @@
+c4 - 2 Prep
+
+1. 
+
+* gives to address of a variable or can be null.
+When pointing to an address, the variable can be modified from within another function.
+& gives a reference to a variable.  It behaves like a pointer but cannot be null.
+
+2. 
+
+c4_prep_2.c
+
+# include <stdio.h>
+
+// fn changes value of x by reference
+void fn(int& x) {
+  x = 23;
+}
+
+int main () {
+
+  int x = 5;
+  printf("%d\n", x);
+  fn(x);
+  printf("%d\n", x);
+}
+
+3.
+
+FILE declares a (pointer to a) file.
+fopen opens a file for reading or writing
+fclose closes an open file so that reading or writing can no longer be performed.
+fgetc reads a single character (i.e. one byte) from an open file.
+EOF is a byte indicating the end of a file
+
+4. 
+
+c4_prep_4.c
+
+# include <stdio.h>
+
+int main () {
+
+  FILE *fp;
+
+  fp = fopen("c4_prep_4.txt", "r");
+
+  char c = fgetc(fp);
+  while(c != EOF) {
+    printf("%c", c);
+    c = fgetc(fp);
+  }
+  fclose(fp);
+}
+
+This reads from the text file:
+c4_prep_4.txt
+
+This is a text file.
+For testing.
+
+
+5. 
+
+isalpha() checks if a character is an alphabetic character, i.e. a-z or A-Z
+Returns a non-zero integer if it is, otherwise 0.
+
+toupper() converts a character to upper case if it is lower case, otherwise it remains unchanged.
+
+Both these functions are in the <ctype.h> library.
+
+6. 
+
+A is ASCII code 65.
+(see https://www.asciitable.com)
+
+7.
+
+8.
+
+% performs modulo arithmetic.
+
